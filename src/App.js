@@ -18,12 +18,13 @@ function App() {
   useEffect(() => {
     const languages = ['en', 'nl'];
     languages.forEach((lang) => {
-      fetch(`https://stag-api.cleancontrol.eu/api/labels/download/${lang}`)
+      fetch(`https://stage-api.cleancontrol.eu/api/labels/download/${lang}`)
         .then((response) => {
           return response.json();
         })
         .then((data) => {
           i18n.addResourceBundle(lang, 'translation', data, true, true);
+          // i18n.changeLanguage('en');
         })
         .catch((error) => {
           console.error('error: ', error);
@@ -36,8 +37,8 @@ function App() {
   };
 
   return (
-    <div>
-      <h2>{t('Welcome to React')}</h2>
+    <div className='introduction-body'>
+      <h2>{t('introductionToCleanControl')}</h2>
       <button onClick={() => changeLanguage('nl')}>Switch to Dutch</button>
       <button onClick={() => changeLanguage('en')}>Switch to English</button>
     </div>
