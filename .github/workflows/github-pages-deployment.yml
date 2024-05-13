@@ -22,7 +22,12 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build
+  
   deploy:
     # Add a dependency to the build job
     needs: build
